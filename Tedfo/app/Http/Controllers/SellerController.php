@@ -16,8 +16,8 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $buyers = User::find(Auth::id())->Buyer;
-        return view('pages/profile/sellers/seller',compact('buyers'));
+        $sellers = User::find(Auth::id())->Seller;
+        return view('pages/profile/sellers/seller',compact('sellers'));
     }
 
     /**
@@ -44,8 +44,7 @@ class SellerController extends Controller
             'factory_add'=> 'required',
             'bin_vat_no'=> 'required',
             'erc_no'=> 'required',
-            'erc_date'=> 'required',
-            'irc_no'=> 'required',
+            'ercDate'=> 'required',
             'irc_no'=> 'required',
             'irc_date'=> 'required',
             'company_phone_no'=> 'required',
@@ -54,7 +53,27 @@ class SellerController extends Controller
             'company_contact_person'=> 'required',
         ]);
 
-        dd(1);
+
+        $seller = new Seller();
+
+        $seller->business_name = $request->business_name;
+        $seller->office_add = $request->office_add;
+        $seller->factory_add = $request->factory_add;
+        $seller->bin_vat_no = $request->bin_vat_no;
+        $seller->erc_no = $request->erc_no;
+        $seller->erc_date = $request->ercDate;
+        $seller->irc_no = $request->irc_no;
+        $seller->irc_date = $request->irc_date;
+        $seller->phone_no = $request->company_phone_no;
+        $seller->fax_no = $request->company_fax_no;
+        $seller->email = $request->company_email;
+        $seller->contact_person = $request->company_contact_person;
+        $seller->user_id = Auth::id();
+        $seller->save();
+
+        return  redirect('seller');
+
+
     }
 
     /**

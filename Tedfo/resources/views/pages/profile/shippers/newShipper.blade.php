@@ -6,19 +6,19 @@
 
         @if (count($errors) > 0)
 
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <div class="alert bg-red alert-dismissible" role="alertdialog">
-                            <li>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                {{ $error }}
-                            </li>
-                        </div>
-                    @endforeach
-                </ul>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <div class="alert bg-red alert-dismissible" role="alertdialog">
+                        <li>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            {{ $error }}
+                        </li>
+                    </div>
+                @endforeach
+            </ul>
         @endif
 
-        <form action="{{route('seller.store')}}" method="post">
+        <form action="{{route('shipper.store')}}" method="post">
             @csrf
             <div class="card">
 
@@ -71,14 +71,14 @@
                         </div>
 
 
-                            <div class="col-sm-8">
-                                <div class="form-group form-float form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="erc_no"/>
-                                        <label class="form-label">ERC No</label>
-                                    </div>
+                        <div class="col-sm-8">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="erc_no"/>
+                                    <label class="form-label">ERC No</label>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="col-sm-4">
                             <div class="form-group">

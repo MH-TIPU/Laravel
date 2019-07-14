@@ -60,9 +60,7 @@ class BuyerController extends Controller
         $buyer->user_id = Auth::id();
         $buyer->save();
 
-        redirect('buyer.index');
-
-
+        return redirect('buyer.index');
 
 
     }

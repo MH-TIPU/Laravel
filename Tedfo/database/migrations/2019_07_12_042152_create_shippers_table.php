@@ -22,6 +22,7 @@ class CreateShippersTable extends Migration
             $table->string('bin_vat_no');
             $table->string('erc_no');
             $table->string('erc_date');
+            $table->string('irc_no');
             $table->string('irc_date');
             $table->string('phone_no');
             $table->string('fax_no');

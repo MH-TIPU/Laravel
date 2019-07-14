@@ -5,7 +5,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="header">
-                <h2 class="text-secondary"> All Buyers</h2>
+                <h2 class="text-secondary"> All Sellers</h2>
                 <ul class="header-dropdown m-r--5">
                     <li> <button onclick="window.location='{{ route("seller.create") }}'" class="btn-sm btn-raised bg-lime waves-effect"> <i class="zmdi zmdi-account-add"> Create</i> </button></li>
                 </ul>
@@ -24,12 +24,12 @@
                     </thead>
 
                     <tbody>
-                    @foreach($buyers as $buyer)
+                    @foreach($sellers as $seller)
                         <tr>
-                            <td>{{$buyer->business_name}}</td>
-                            <td>{{$buyer->office_add}}</td>
-                            <td>{{$buyer->phone_no}}</td>
-                            <td>{{$buyer->email}}</td>
+                            <td>{{$seller->business_name}}</td>
+                            <td>{{$seller->office_add}}</td>
+                            <td>{{$seller->phone_no}}</td>
+                            <td>{{$seller->email}}</td>
                             <td><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></td>
                             <td><button type="button" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button></td>
                         </tr>
