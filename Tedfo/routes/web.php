@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
@@ -36,3 +36,6 @@ Route::resource('buyerBank','BuyerBankController');
 Route::resource('cnf','CnfController');
 Route::resource('product','ProductController');
 Route::resource('sellerBank','SellerBankController');
+
+
+Route::get('logout', 'Auth\LoginController@logout');

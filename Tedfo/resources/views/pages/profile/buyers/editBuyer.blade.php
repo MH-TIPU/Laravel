@@ -18,9 +18,10 @@
             </ul>
         @endif
 
-        <form action="{{route('buyer.store')}}" method="post">
-            @csrf
-            <div class="card">
+            <form action="{{route('buyer.update',$buyer->id )}}" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="card">
 
                 <div class="body">
 
@@ -31,8 +32,9 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Business Name</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="business_name" placeholder="Business Name" required />
+                                    <input type="text" class="form-control" name="business_name" value="{{$buyer->business_name}}" required />
 
                                 </div>
                             </div>
@@ -41,8 +43,9 @@
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Office Address</label>
                                 <div class="form-line">
-                                    <textarea rows="1" class="form-control no-resize auto-growth" name="office_add"  placeholder="Office Address" ></textarea>
+                                    <textarea rows="1" class="form-control no-resize auto-growth" name="office_add">{{$buyer->office_add}}</textarea>
 
                                 </div>
                             </div>
@@ -50,8 +53,9 @@
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Factory Address</label>
                                 <div class="form-line">
-                                    <textarea rows="1" class="form-control no-resize auto-growth" name="factory_add" placeholder="Factory Address" required ></textarea>
+                                    <textarea rows="1" class="form-control no-resize auto-growth" name="factory_add"  required > {{$buyer->factory_add}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -62,32 +66,36 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Phone No</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="phone_no" placeholder="Phone No" required />
+                                    <input type="text" class="form-control" name="phone_no" value="{{$buyer->phone_no}}" required />
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Fax Number</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="fax_no" placeholder="Fax Number" required />
+                                    <input type="text" class="form-control" name="fax_no" value="{{$buyer->fax_no}}" required />
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Email</label>
                                 <div class="form-line">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required />
+                                    <input type="email" class="form-control" name="email" value="{{$buyer->email}}" required />
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Contact Person</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="contact_person" placeholder="Contact Person" required />
+                                    <input type="text" class="form-control" name="contact_person" value="{{$buyer->contact_person}}" required />
                                 </div>
                             </div>
                         </div>
@@ -103,11 +111,12 @@
                     <div class="row clearfix" id="info" style="display:none">
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Other Information</label>
                                 <div class="form-line">
-                                    <textarea rows="1" class="form-control no-resize auto-growth" name="add_info" placeholder="Other Information" ></textarea>
+                                    <textarea rows="1" class="form-control no-resize auto-growth" name="add_info" value="Other Information" ></textarea>
                                 </div>
                             </div>
-                           <a href="#"> <i class="zmdi zmdi-plus"> Add More</i></a>
+                            <a href="#"> <i class="zmdi zmdi-plus"> Add More</i></a>
                         </div>
                     </div>
 

@@ -31,8 +31,18 @@
                             <td>{{$shipper->office_add}}</td>
                             <td>{{$shipper->phone_no}}</td>
                             <td>{{$shipper->email}}</td>
-                            <td><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></td>
-                            <td><button type="button" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button></td>
+
+                            <td>
+                                <a href="{{ route('shipper.edit', $shipper->id) }}"><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></a>
+                            </td>
+                            <td>
+                                <form action="{{ route('shipper.destroy', $shipper)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button>
+                                </form>
+                            </td>
+
                         </tr>
                     @endforeach
                     </tbody>

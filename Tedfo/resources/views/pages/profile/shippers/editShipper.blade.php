@@ -6,49 +6,55 @@
 
         @if (count($errors) > 0)
 
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <div class="alert bg-red alert-dismissible" role="alertdialog">
-                            <li>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                {{ $error }}
-                            </li>
-                        </div>
-                    @endforeach
-                </ul>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <div class="alert bg-red alert-dismissible" role="alertdialog">
+                        <li>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            {{ $error }}
+                        </li>
+                    </div>
+                @endforeach
+            </ul>
         @endif
 
-        <form action="{{route('seller.store')}}" method="post">
-            @csrf
-            <div class="card">
+            <form action="{{route('shipper.update',$shipper->id )}}" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="card">
 
                 <div class="body">
 
-                    <small>Create new Seller profile</small>
+                    <small>Edit new Shipper profile</small>
 
 
                     <h2 class="card-inside-title">Basic Information</h2>
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="business_name" placeholder="Business Name"required/>
+                                <label class="text-primary">Business Name</label>
+                                <div class="form-line input-group-prepend">
+                                    <input type="text" class="form-control" name="business_name" value="{{$shipper->business_name}}" required/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Office Address</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="office_add" placeholder="Office Address" required/>
+                                    <input type="text" class="form-control" name="office_add" value="{{$shipper->office_add}}" required/>
                                 </div>
                             </div>
+
+
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Factory Address</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="factory_add" placeholder="Factory Address" required/>
+                                    <input type="text" class="form-control" name="factory_add" value="{{$shipper->factory_add}}" required/>
                                 </div>
                             </div>
                         </div>
@@ -60,41 +66,46 @@
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">BIN / VAT NO </label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="bin_vat_no" placeholder="BIN / VAT NO " required/>
+                                    <input type="text" class="form-control" name="bin_vat_no" value="{{$shipper->bin_vat_no}}" required/>
                                 </div>
                             </div>
                         </div>
 
 
-                            <div class="col-sm-8">
-                                <div class="form-group form-float form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="erc_no" placeholder="ERC No" required/>
-                                    </div>
+                        <div class="col-sm-8">
+                            <div class="form-group form-float form-group">
+                                <label class="text-primary">ERC No</label>
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="erc_no" value="{{$shipper->erc_no}}" required/>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="col-sm-4">
-                            <div class="form-group">
+                            <div class="form-group form-float form-group">
+                                <label class="text-primary">Date</label>
                                 <div class="form-line">
-                                    <input type="date" class="date form-control" name="ercDate" required>
+                                    <input type="date" class="date form-control" name="ercDate" value="{{$shipper->erc_date}}" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-8">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">IRC No</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="irc_no" placeholder="IRC No" required/>
+                                    <input type="text" class="form-control" name="irc_no" value="{{$shipper->irc_no}}" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="form-group">
+                            <div class="form-group form-float form-group">
+                                <label class="text-primary">Date</label>
                                 <div class="form-line">
-                                    <input type="date" class="date form-control" name="irc_date" required>
+                                    <input type="date" class="date form-control" name="irc_date"  value="{{$shipper->irc_date}}" required/>
                                 </div>
                             </div>
                         </div>
@@ -108,8 +119,9 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Company Phone No</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_phone_no" placeholder="Company Phone No" required/>
+                                    <input type="text" class="form-control"  name="company_phone_no" value="{{$shipper->phone_no}}" required/>
                                 </div>
                             </div>
                         </div>
@@ -117,24 +129,27 @@
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Company Fax No</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_fax_no" placeholder="Company Fax No" required/>
+                                    <input type="text" class="form-control"  name="company_fax_no" value="{{$shipper->fax_no}}" required/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Company Email</label>
                                 <div class="form-line">
-                                    <input type="email" class="form-control"  name="company_email" placeholder="Company Email" required/>
+                                    <input type="text" class="form-control"  name="company_email" value="{{$shipper->email}}" required/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group form-float form-group">
+                                <label class="text-primary">Contact Person</label>
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="contact_person" placeholder="Contact Person" required/>
+                                    <input type="text" class="form-control"  name="company_contact_person" value="{{$shipper->contact_person}}" required/>
                                 </div>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ class CreateBuyerBanksTable extends Migration
             $table->string('branch_add');
             $table->string('other_info');
 
-            $table->string('user_ids');
+            $table->string('user_id');
 
             $table->timestamps();
         });

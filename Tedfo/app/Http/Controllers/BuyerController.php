@@ -14,6 +14,12 @@ class BuyerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $buyers = User::find(Auth::id())->Buyer;
@@ -60,7 +66,7 @@ class BuyerController extends Controller
         $buyer->user_id = Auth::id();
         $buyer->save();
 
-        return redirect('buyer.index');
+        return redirect('buyer');
 
 
     }
@@ -82,9 +88,11 @@ class BuyerController extends Controller
      * @param  \App\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buyer $buyer)
+    public function edit($id)
     {
-        //
+
+        $buyer = Buyer::find($id);
+        return view('pages/profile/buyers/editBuyer', compact('buyer'));
     }
 
     /**
@@ -94,9 +102,30 @@ class BuyerController extends Controller
      * @param  \App\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buyer $buyer)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'business_name'=> 'required',
+            'office_add'=> 'required',
+            'factory_add'=> 'required',
+            'phone_no'=> 'required',
+            'fax_no'=> 'required',
+            'email'=> 'required',
+            'contact_person'=> 'required',
+        ]);
+
+        $buyer = Buyer::find($id);
+
+        $buyer->business_name = $request->business_name;
+        $buyer->office_add = $request->office_add;
+        $buyer->factory_add = $request->factory_add;
+        $buyer->phone_no = $request->phone_no;
+        $buyer->fax_no = $request->fax_no;
+        $buyer->email = $request->email;
+        $buyer->contact_person = $request->contact_person;
+        $buyer->save();
+
+        return redirect('buyer');
     }
 
     /**
@@ -107,6 +136,7 @@ class BuyerController extends Controller
      */
     public function destroy(Buyer $buyer)
     {
-        //
+        $buyer->delete();
+        return redirect('buyer');
     }
 }

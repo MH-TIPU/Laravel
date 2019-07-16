@@ -14,6 +14,11 @@ class SellerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $sellers = User::find(Auth::id())->Seller;
@@ -50,7 +55,7 @@ class SellerController extends Controller
             'company_phone_no'=> 'required',
             'company_fax_no'=> 'required',
             'company_email'=> 'required',
-            'company_contact_person'=> 'required',
+            'contact_person'=> 'required',
         ]);
 
 
@@ -67,7 +72,8 @@ class SellerController extends Controller
         $seller->phone_no = $request->company_phone_no;
         $seller->fax_no = $request->company_fax_no;
         $seller->email = $request->company_email;
-        $seller->contact_person = $request->company_contact_person;
+        $seller->contact_person = $request->contact_person;
+
         $seller->user_id = Auth::id();
         $seller->save();
 
@@ -93,9 +99,10 @@ class SellerController extends Controller
      * @param  \App\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seller $seller)
+    public function edit($id)
     {
-        //
+        $seller = Seller::find($id);
+        return view('pages/profile/sellers/editSeller',compact('seller'));
     }
 
     /**
@@ -105,9 +112,42 @@ class SellerController extends Controller
      * @param  \App\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'business_name'=> 'required',
+            'office_add'=> 'required',
+            'factory_add'=> 'required',
+            'bin_vat_no'=> 'required',
+            'erc_no'=> 'required',
+            'ercDate'=> 'required',
+            'irc_no'=> 'required',
+            'irc_date'=> 'required',
+            'company_phone_no'=> 'required',
+            'company_fax_no'=> 'required',
+            'company_email'=> 'required',
+            'contact_person'=> 'required',
+        ]);
+
+
+        $seller = Seller::find($id);
+
+        $seller->business_name = $request->business_name;
+        $seller->office_add = $request->office_add;
+        $seller->factory_add = $request->factory_add;
+        $seller->bin_vat_no = $request->bin_vat_no;
+        $seller->erc_no = $request->erc_no;
+        $seller->erc_date = $request->ercDate;
+        $seller->irc_no = $request->irc_no;
+        $seller->irc_date = $request->irc_date;
+        $seller->phone_no = $request->company_phone_no;
+        $seller->fax_no = $request->company_fax_no;
+        $seller->email = $request->company_email;
+        $seller->contact_person = $request->contact_person;
+
+        $seller->save();
+
+        return  redirect('seller');
     }
 
     /**
@@ -118,6 +158,7 @@ class SellerController extends Controller
      */
     public function destroy(Seller $seller)
     {
-        //
+        $seller->delete();
+        return redirect('seller');
     }
 }

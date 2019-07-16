@@ -30,8 +30,18 @@
                                 <td>{{$buyer->office_add}}</td>
                                 <td>{{$buyer->phone_no}}</td>
                                 <td>{{$buyer->email}}</td>
-                                <td><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></td>
-                                <td><button type="button" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button></td>
+
+                                <td>
+                                    <a href="{{ route('buyer.edit', $buyer->id) }}"><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('buyer.destroy', $buyer)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button>
+                                    </form>
+                                </td>
+
                             </tr>
                         @endforeach
                     </tbody>

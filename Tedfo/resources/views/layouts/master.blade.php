@@ -61,71 +61,7 @@
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="zmdi zmdi-search"></i></a></li>
-            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
-                    <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
-                </a>
-                <ul class="dropdown-menu slideDown">
-                    <li class="header">NOTIFICATIONS</li>
-                    <li class="body">
-                        <ul class="menu list-unstyled">
-                            <li> <a href="javascript:void(0);">
-                                    <div class="icon-circle l-coral"> <i class="material-icons">person_add</i> </div>
-                                    <div class="menu-info">
-                                        <h4>12 new members joined</h4>
-                                        <p> <i class="material-icons">access_time</i> 14 mins ago </p>
-                                    </div>
-                                </a> </li>
-                            <li> <a href="javascript:void(0);">
-                                    <div class="icon-circle l-turquoise"> <i class="material-icons">add_shopping_cart</i> </div>
-                                    <div class="menu-info">
-                                        <h4>4 sales made</h4>
-                                        <p> <i class="material-icons">access_time</i> 22 mins ago </p>
-                                    </div>
-                                </a> </li>
-                        </ul>
-                    </li>
-                    <li class="footer"> <a href="javascript:void(0);">View All Notifications</a> </li>
-
-                </ul>
-            </li>
-            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-flag"></i>
-                    <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
-                </a>
-                <ul class="dropdown-menu slideDown">
-                    <li class="header">TASKS</li>
-                    <li class="body">
-                        <ul class="menu tasks list-unstyled">
-                            <li> <a href="javascript:void(0);">
-                                    <h4> Footer display issue <small>72%</small> </h4>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                                    </div>
-                                </a> </li>
-                            <li> <a href="javascript:void(0);">
-                                    <h4> Make new buttons <small>56%</small> </h4>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                                    </div>
-                                </a> </li>
-                        </ul>
-                    </li>
-                    <li class="footer"> <a href="javascript:void(0);">View All Tasks</a> </li>
-                </ul>
-            </li>
-
-            {{--full Screen--}}
-
-            <li>
-                <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true">
-                    <i class="zmdi zmdi-fullscreen"></i>
-                </a>
-            </li>
-
-            {{--Log Out--}}
-
-            <li><a href="#" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a></li>
-
+            <li><a href="{{ route('logout') }}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a></li>
         </ul>
     </div>
 </nav>
@@ -149,9 +85,9 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active"> <a href="#"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+            <li> <a href="#"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
 
-            <li class="open"> <a href="#" class="menu-toggle"><i class="zmdi zmdi-accounts"></i><span>Profiles</span></a>
+            <li class="open active"> <a href="#" class="menu-toggle"><i class="zmdi zmdi-accounts"></i><span>Profiles</span></a>
                 <ul class="ml-menu">
                     <li><a href="{{route('buyer.index')}}">Buyer</a> </li>
                     <li><a href="{{route('seller.index')}}">Seller</a> </li>
@@ -163,23 +99,15 @@
             <li>
                 <a href="#" class="menu-toggle"><i class="zmdi zmdi-money-box"></i><span>Banks</span></a>
                 <ul class="ml-menu">
-                    <li><a href="#">Buyer Bank</a> </li>
-                    <li><a href="#">Seller Bank</a> </li>
+                    <li><a href="{{route('buyerBank.index')}}">Buyer Bank</a> </li>
+                    <li><a href="{{route('sellerBank.index')}}">Seller Bank</a> </li>
                 </ul>
             </li>
 
 
-            <li> <a href="#"><i class="zmdi zmdi-boat"></i><span>CNF</span> </a> </li>
-            <li><a href="#"><i class="zmdi zmdi-codepen"></i><span>Product</span> </a></li>
+            <li> <a href="{{route('cnf.index')}}"><i class="zmdi zmdi-boat"></i><span>CNF</span> </a> </li>
+            <li><a href="{{route('product.index')}}"><i class="zmdi zmdi-codepen"></i><span>Product</span> </a></li>
 
-
-            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-lock"></i><span>Authentication</span> </a>
-                <ul class="ml-menu">
-                    <li><a href="#">Sign In</a> </li>
-                    <li><a href="#">Sign Up</a> </li>
-                    <li><a href="#">Forgot Password</a> </li>
-                </ul>
-            </li>
 
         </ul>
     </div>
@@ -196,10 +124,21 @@
                 <small class="text-muted">Welcome to Tedfo Docs</small>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12">
-                <ul class="breadcrumb float-md-right">
-                    <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ul>
+
+                <ol class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item active" href="{{route('home')}}">
+                        <i class="zmdi zmdi-home"></i>
+                    </li>
+
+                    @for($i = 1; $i <= count(Request::segments()); $i++)
+                        <li>
+                            <a href="{{ URL::to( implode( '/', array_slice(Request::segments(), 0 ,$i, true)))}}">
+                                / {{strtoupper(Request::segment($i))}}
+                            </a>
+                        </li>
+                    @endfor
+                </ol>
+
             </div>
         </div>
     </div>

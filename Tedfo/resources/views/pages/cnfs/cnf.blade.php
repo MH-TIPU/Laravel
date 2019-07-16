@@ -7,7 +7,7 @@
             <div class="header">
                 <h2 class="text-secondary"> All Sellers</h2>
                 <ul class="header-dropdown m-r--5">
-                    <li> <button onclick="window.location='{{ route("seller.create") }}'" class="btn-sm btn-raised bg-lime waves-effect"> <i class="zmdi zmdi-account-add"> Create</i> </button></li>
+                    <li> <button onclick="window.location='{{ route("cnf.create") }}'" class="btn-sm btn-raised bg-lime waves-effect"> <i class="zmdi zmdi-account-add"> Create</i> </button></li>
                 </ul>
             </div>
 
@@ -16,26 +16,28 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th data-breakpoints="xs">Office</th>
+                        <th data-breakpoints="xs">Address</th>
                         <th data-breakpoints="xs">Phone No</th>
                         <th data-breakpoints="xs">email</th>
+                        <th data-breakpoints="xs">Registration No</th>
 
                     </tr>
                     </thead>
 
                     <tbody>
-                    @foreach($sellers as $seller)
+                    @foreach($cnfs as $cnf)
                         <tr>
-                            <td>{{$seller->business_name}}</td>
-                            <td>{{$seller->office_add}}</td>
-                            <td>{{$seller->phone_no}}</td>
-                            <td>{{$seller->email}}</td>
+                            <td>{{$cnf->name}}</td>
+                            <td>{{$cnf->address}}</td>
+                            <td>{{$cnf->phone}}</td>
+                            <td>{{$cnf->email}}</td>
+                            <td>{{$cnf->reg_no}}</td>
 
                             <td>
-                                <a href="{{ route('seller.edit', $seller->id) }}"><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></a>
+                                <a href="{{ route('cnf.edit', $cnf->id) }}"><button type="button" class="btn-sm  btn-raised btn-success waves-effect">Edit</button></a>
                             </td>
                             <td>
-                                <form action="{{ route('seller.destroy', $seller)}}" method="post">
+                                <form action="{{ route('cnf.destroy', $cnf)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-sm  btn-raised btn-danger waves-effect">Delete</button>

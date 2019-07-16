@@ -18,125 +18,133 @@
             </ul>
         @endif
 
-        <form action="{{route('shipper.store')}}" method="post">
+
+        <form action="{{route('product.store')}}" method="post">
             @csrf
             <div class="card">
 
                 <div class="body">
 
-                    <small>Create new Seller profile</small>
+                    <small>Create new Product</small>
 
 
                     <h2 class="card-inside-title">Basic Information</h2>
                     <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <div class="form-group form-float form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="business_name" placeholder="Business Name" required/>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-12">
-                            <div class="form-group form-float form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="office_add" placeholder="Office Address" required/>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-group form-float form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="factory_add" placeholder="Factory Address" required/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <h2 class="card-inside-title">Business Information</h2>
-                    <div class="row clearfix">
-
-                        <div class="col-sm-12">
-                            <div class="form-group form-float form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="bin_vat_no" placeholder="BIN / VAT NO " required/>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div class="col-sm-8">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="erc_no" placeholder="ERC No" required/>
+                                    <input type="text" class="form-control" name="name" placeholder="Product Name"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="date" class="date form-control" name="ercDate" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-8">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="irc_no" placeholder="IRC No" required>
+                                    <input type="text" class="form-control" name="code_sku" placeholder="Code / SKU"/>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
-                            <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="date" class="date form-control" name="irc_date" required/>
+                                    <input type="text" class="form-control" name="description" placeholder="Product Description" />
                                 </div>
                             </div>
                         </div>
 
+                        <div class="col-sm-6">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="hs_code" placeholder="HS Code" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="hs_code_bd" placeholder="HS Code Bd" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="photo" placeholder="Product Photo" />
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
 
-                    <h2 class="card-inside-title">Contact Information</h2>
-
+                    <h2 class="card-inside-title">Weight Information</h2>
                     <div class="row clearfix">
-                        <div class="col-sm-12">
+
+                        <div class="col-sm-6">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_phone_no" placeholder="Company Phone No" required/>
+                                    <input type="text" class="form-control" name="unit" placeholder="Unit"/>
                                 </div>
                             </div>
                         </div>
 
-
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_fax_no" placeholder="Company Fax No" required/>
+                                    <input type="text" class="form-control" name="net_weight" placeholder="New Weight"/>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_email" placeholder="Company Email" required/>
+                                    <input type="text" class="form-control" name="gross_weight" placeholder="Gross Weight" />
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="form-group form-float form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control"  name="company_contact_person" placeholder="Contact Person" required/>
+                                    <input type="text" class="form-control" name="cbm" placeholder="CBM Per Unit" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <h2 class="card-inside-title">Price Information</h2>
+                    <div class="row clearfix">
+
+                        <div class="col-sm-6">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="cost_of product" placeholder="Cost Of Product Per Unit"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="cost_of_packing" placeholder="Cost Of Packing Per Unit"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group form-float form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="cash_incentive" placeholder="Cash Incentive / Duty Draw Back" />
                                 </div>
                             </div>
                         </div>
@@ -157,7 +165,6 @@
                 </div>
             </div>
         </form>
-
 
     </div>
 
